@@ -19,6 +19,7 @@ function Rosary () {
     }
     const reset = () => {
         setCount(0)
+        setTotal(0)
     }
 
     return (
