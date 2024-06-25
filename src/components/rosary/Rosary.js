@@ -1,19 +1,20 @@
 import "./Rosary.css"
 import { GrPowerReset } from "react-icons/gr";
 import { MdExposurePlus1 } from "react-icons/md";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import song from "../image/song.mp3"
 
 function Rosary () {
     let [count, setCount] = useState(0)
     let [total, setTotal] = useState(0)
+    const audio = useRef()
     const increment = () => {
         if (count < 33) {
             setCount(count + 1)
         }
         if (count === 33) {
             setCount(1)
-
+            audio.current.play()
         }
         setTotal(total + 1)
     }
@@ -37,7 +38,7 @@ function Rosary () {
                 </div>
             </div>
 
-            <audio  src={song}></audio>
+            <audio ref={audio} src={song}></audio>
         </div>
     )
 }
